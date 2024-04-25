@@ -1,4 +1,4 @@
-import { PostgresHelper } from "../../database/postgres/helper";
+import { PostgresHelper } from "../../database/postgres/helper.js";
 
 export class PostgresGetUserByIdRepository{
   async execute(userId){
@@ -8,7 +8,6 @@ export class PostgresGetUserByIdRepository{
         userId
       ]
     )
-
-    return user[0]
+    return user
   }
 }
