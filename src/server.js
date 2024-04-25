@@ -12,7 +12,7 @@ app.post("/api/users",async (req, res)=>{
   const createUserController = new CreateUserController()
 
   const response = await createUserController.execute(req)
-
+  console.log(response);
   res.status(response.statusCode).json(response.body)
 })
 
