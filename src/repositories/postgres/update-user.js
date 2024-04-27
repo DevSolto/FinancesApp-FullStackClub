@@ -1,4 +1,4 @@
-import { PostgresHelper } from "../../database/postgres/helper"
+import { PostgresHelper } from "../../database/postgres/helper.js"
 
 export class PostgresUpdateUserRepository{
   async execute(userId, updateUserParams){
@@ -15,13 +15,13 @@ export class PostgresUpdateUserRepository{
     const updateQuery=`
       update users
       set ${updateFields.join(",")}
-      where id = ${updateValues.length}
+      where id = $${updateValues.length}
+      RETURNING *
     `
     const userUpdated = await PostgresHelper.query(
       updateQuery,
       updateValues
     )
-
     return userUpdated
   }
 }
